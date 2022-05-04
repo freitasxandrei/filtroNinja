@@ -1,0 +1,65 @@
+-- COMANDO DE CRIAÇÃO DE BANDO DE DADOS
+
+CREATE DATABASE grupo
+
+-- COMANDO DE CRIAÇÃO DE TABELA DE GRUPOS
+
+CREATE TABLE `grupo` (
+  `id` INT(10) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(255) DEFAULT NULL,
+  `descricao` TEXT,
+  `ordem` INT(10) NOT NULL,
+  `status` enum('s','n') DEFAULT NULL,
+  `data_inc` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+)  ENGINE = innodb;
+
+-- COMANDO DE CRIAÇÃO DE TABELA DE EMPRESAS
+
+CREATE TABLE `empresa` (
+  `id` INT(10) NOT NULL AUTO_INCREMENT,
+  `nome_fantasia` varchar(255) DEFAULT NULL,
+  `nome` varchar(255) DEFAULT NULL,
+  `cnpj` bigint,
+  `descricao` TEXT,
+  `numero_end` INT,
+  `rua_end`  varchar(50),
+  `bairro_end`  varchar(50),
+  `cidade_end` varchar(50),
+  `estado_end` varchar(2),
+  `ordem` INT(10) NOT NULL,
+  `status` enum('s','n') DEFAULT NULL,
+  `data_inc` timestamp NULL DEFAULT NULL,
+  `fk_id_grupo` int,
+  PRIMARY KEY (`id`)
+) ENGINE = innodb;
+
+-- COMANDO DE CRIAÇÃO DE TABELA DE USUÁRIOS
+
+CREATE TABLE `usuario` (
+  `id` INT(10) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(255) DEFAULT NULL,
+  `sobrenome` varchar(255) DEFAULT NULL,
+  `cpf` bigint NOT NULL,
+  `telefone` bigint,
+  `email` varchar(100),
+  `numero_end` INT,
+  `rua_end`  varchar(50),
+  `bairro_end`  varchar(50),
+  `cidade_end` varchar(50),
+  `estado_end` varchar(2), 
+  `focal` enum('s','n') DEFAULT NULL,
+  `ordem` INT(10) NOT NULL,
+  `status` enum('s','n') DEFAULT NULL,
+  `data_inc` timestamp NULL DEFAULT NULL,
+  `fk_id_empresa` int,
+  PRIMARY KEY (`id`)
+) ENGINE = innodb;
+
+-- ADICIONANDO FOREIGN KEY DE ID / GRUPO EM EMPRESA
+
+ALTER TABLE `empresa` ADD CONSTRAINT `fk_id_grupo` FOREIGN KEY ( `fk_id_grupo` ) REFERENCES `grupo` ( `id` ) ;
+
+-- ADICIONANDO FOREIGN KEY DE ID / EMPRESA EM USUARIO
+
+ALTER TABLE `usuario` ADD CONSTRAINT `fk_id_empresa` FOREIGN KEY ( `fk_id_empresa` ) REFERENCES `empresa` ( `id` ) ;

@@ -1,0 +1,81 @@
+.selector-for-some-widget {
+    box-sizing: content-box;
+} 
+.navandrei .nav-link {
+    color: orange;
+    text-decoration: none;
+    background-color: transparent;
+    font-family: naruto;
+}
+.jumbotronandrei {
+  margin: 5%;
+}
+footer {
+  text-align: center;
+}
+.andreifooter {
+  color: orange;
+  font-family: naruto;
+}
+.andreidisplay-4 {
+  color: orange;
+  font-family: naruto;
+}
+.andreih2 {
+  color: orange;
+  font-family: naruto;
+  text-align: left;
+}
+.andreih2 {
+    color: orange;
+    font-family: naruto;
+    text-align: left;
+}
+.andreih2ranking {
+  color: orange;
+  font-family: naruto;
+  text-align: center;
+}
+.andreih4 {
+    color: orange;
+    font-family: naruto;
+    text-align: left;
+}
+.andreip {
+  text-align: justify;
+}
+.andreicarrossel {
+  width: 80%;
+  text-align: center;
+  margin: 0 10% 0 10%;
+}
+@font-face {
+  font-family: 'naruto';
+  src: url('njnaruto.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+.hr2 {
+    border: 0;
+    height: 2px;
+    background-image: linear-gradient(to right, transparent, #CCC, transparent);  
+}
+.afonte {
+    color: orange;
+    font-family: naruto;
+}
+body {
+  width: 100%;
+}
+.andreitable {
+  margin: 5%;
+  width: 90%;
+  text-align: center;
+}
+.andreitable .thead-dark th {
+  color: orange;
+  font-family: naruto;
+}
+.headerpadrao {
+  margin-bottom: 5%;
+}
