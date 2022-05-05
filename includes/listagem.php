@@ -31,75 +31,55 @@ if (isset($_GET['status'])) {
 
     <?php } else { ?>
 
-        <form method="get">
+        <section class="mb-5" style="margin-top: 2%;">
+            <form method="get">
+                <div class="row">
+                    <div class="col">
 
-            <div class="row my-4">
-
-
-                <div class="col">
-
-                    <input type="text" placeholder="Buscar por ID Ninja" name="busca" class="form-control" value="<?= $busca ?>">
-
+                        <select class="form-control" name="filtro" id="filtragem" value="">
+                            <option value="all">Todos</option>
+                            <?php foreach ($listaNoticia as $key => $value) { ?>
+                                <option value="<?php echo $value->id; ?>" <?php echo $obNoticia->id == $value->id ? "selected" : ''; ?>> <?php echo $value->id; ?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
                 </div>
+            </form>
+        </section>
 
-                <div class="col">
+        <div class='card-deck row' style="margin-top: 5%">
+            <?php foreach ($Noticia as $key => $value) { ?>
+                <div class="col-12 col-xl-3 item item-selecionado-<?php echo $value->id; ?>">
+                    <div class='card mb-4 botoes'>
+                        <img src='assets/image/naruto.jpg' class="card-img-top">
+                        <div class='card-body'>
+                            <h5 class='card-title'><?php echo $value->titulo; ?></h5>
+                            <p class='card-text'><?php echo $value->id; ?></p>
+                            <p class='card-text'><?php echo $value->descricao; ?></p>
+                            <p class='card-text'><?php echo $value->autor; ?></p>
+                            <p class='card-text'><?php echo ($value->status == 's' ? 'Ativo' : 'Inativo'); ?></p>
+                            <?php echo $value->data ?></td>
+                            <div class="row mt-3">
+                                <div class="col-12 col-lg-5">
+                                    <a href="editar.php?id=<?php echo $value->id; ?>">
+                                        <button type='button' class='btn btn-success botoes'>Editar</button>
+                                    </a>
+                                </div>
 
-                    <select name="status" class="form-control">
+                                <div class="col-12 col-lg-5">
 
-                        <option value=""> Ativo/Inativo </option>
-                        <option value="s" <?=$filtroStatus == 's' ? 'selected' : ''?>> Ativo </option>
-                        <option value="n" <?=$filtroStatus == 'n' ? 'selected' : ''?>> Inativo </option>
+                                    <a href="excluir.php?id=<?php echo $value->id; ?>">
+                                        <button type='button' class='btn btn-danger botoes'>Excluir</button>
+                                    </a>
+                                </div>
+                            </div>
 
-                    </select>
-
+                        </div>
+                    </div>
                 </div>
+            <?php } ?>
+        </div>
 
-                <div class="col d-flex align-itens-end">
-
-                    <button type="submit" class="btn btn-primary"> Filtrar </button>
-
-                </div>
-
-            </div>
-
-        </form>
-
-
-        <table class="table bg-light mt-3">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>Descrição</th>
-                    <th>Data</th>
-                    <th>Autor</th>
-                    <th>Status</th>
-                    <th>Ações</th> <!-- Para editar e excluir -->
-                </tr>
-            </thead>
-
-            <tbody>
-                <?php foreach ($Noticia as $key => $value) { ?>
-                    <tr>
-                        <td><?php echo $value->id; ?></td>
-                        <td><?php echo $value->titulo; ?></td>
-                        <td><?php echo $value->descricao; ?></td>
-                        <td><?php echo $value->data; ?></td>
-                        <td><?php echo $value->autor; ?></td>
-                        <td><?php echo ($value->status == 's' ? 'Ativo' : 'Inativo'); ?></td>
-                        <td>
-                            <a href="editar.php?id=<?php echo $value->id; ?>">
-                                <button type="button" class="btn btn-primary">Editar</button>
-                            </a>
-
-                            <a href="excluir.php?id=<?php echo $value->id; ?>">
-                                <button type="button" class="btn btn-danger">Excluir</button>
-                            </a>
-                        </td>
-                    </tr>
-                <?php } ?>
-            </tbody>
-        </table>
 
     <?php } ?>
 

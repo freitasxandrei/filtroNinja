@@ -63,7 +63,7 @@ class Noticia
             'data' => $this->data,
             'autor' => $this->autor,
             'status' => $this->status,
-            
+
         ]);
 
         return true;
@@ -111,7 +111,8 @@ class Noticia
      * Função para atualizar a vaga do banco de dados
      * @return boolean
      */
-    public function atualizar() {
+    public function atualizar()
+    {
         //Definir a data
         // $this->data = date('Y-m-d H:i:s');
 
@@ -120,7 +121,7 @@ class Noticia
         return ($objDatabase)->update('id = ' . $this->id, [
             'titulo' => $this->titulo,
             'descricao' => $this->descricao,
-            'autor'=> $this->autor,
+            'autor' => $this->autor,
             'status' => $this->status,
             'data' => $this->data
         ]);
